@@ -37,7 +37,7 @@ var frequency = 2;//刷新频率，单位秒
 var plusonly = ['MNRJ2CH/A','MNFU2CH/A','MNG02CH/A','MNFR2CH/A','MNRL2CH/A','MNRM2CH/A','MNFX2CH/A','MNFQ2CH/A','MNRK2CH/A','MNFT2CH/A','MNFT2CH/A','MNFW2CH/A','MNFV2CH/A','MNFP2CH/A','MNFY2CH/A']
 // 指定关注型号
 
-var stores_list ={
+var stores_lists ={
     "stores" : [{
     "storeNumber" : "R484",
     "storeName" : "深圳益田假日广场",
@@ -49,7 +49,7 @@ var stores_list ={
 
 
 
-var stores_list_temp = {
+var stores_list = {
   "updatedTime" : "下午 11:45",
   "supportedDomains" : {
     "0" : "https://apple.com/cn/iphone-7/",
@@ -938,8 +938,11 @@ function checkStore(){
             success: function (o) {
                    
                    if(online){
-                       var a = stores_list.stores[0].storeNumber;
-                       checkStatus(o[a],a)
+                       //var a = stores_list.stores[0].storeNumber;
+                       //checkStatus(o[a],a)
+                       for(i in o){
+                       checkStatus(o[i],i)
+                   }
 
                    }else{
                        for(i in source){
@@ -960,7 +963,7 @@ function checkStatus(v,v2){
                            if(checkplus(i)){
                              console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:red');
                            }else{
-                             console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:green');
+                             //console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:green');
                            }
                        }
                    }
