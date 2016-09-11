@@ -14,12 +14,12 @@
  MNQJ2ZP/A:iPhone 7 Plus 32GB 銀色
  MN8H2ZP/A:iPhone 7 32GB 銀色
  MN4C2ZP/A:iPhone 7 Plus 128GB 玫瑰金色
- MN4D2ZP/A:iPhone 7 Plus 128GB 亮黑色
+ MN4D2ZP/A:iPhone 7 Plus 128GB 亮黑色 
  MN4J2ZP/A:iPhone 7 Plus 256GB 金色
  MN4A2ZP/A:iPhone 7 Plus 128GB 金色
  MN8L2ZP/A:iPhone 7 128GB 黑色
  MN8T2ZP/A:iPhone 7 256GB 銀色
- MNQH2ZP/A:iPhone 7 Plus 32GB 黑色
+ MNQH2ZP/A:iPhone 7 Plus 32GB 黑色 
  MN8W2ZP/A:iPhone 7 256GB 亮黑色
  MN4E2ZP/A:iPhone 7 Plus 256GB 黑色
  MN8J2ZP/A:iPhone 7 32GB 金色
@@ -35,6 +35,8 @@
 var online = 1;
 var count = 0;
 var frequency = 2;//刷新频率，单位秒
+var plusonly = ['MN492ZP/A','MNQK2ZP/A','N4L2ZP/A','MN4F2ZP/A','MNQJ2ZP/A','MN4C2ZP/A','MN4D2ZP/A','MN4J2ZP/A','MN4A2ZP/A','MNQH2ZP/A','MN4E2ZP/A','MN4K2ZP/A','MN482ZP/A','MNQL2ZP/A']
+// 指定关注型号
 
 var stores_list = {
   "updatedTime" : "下午 3:05",
@@ -102,7 +104,7 @@ var source = {
     "MN8H2ZP/A" : "NONE",
     "MN4C2ZP/A" : "NONE",
     "MN4D2ZP/A" : "NONE",
-    "MN4J2ZP/A" : "NONE",
+    "MN4J2ZP/A" : "ALL",
     "MN4A2ZP/A" : "NONE",
     "MN8L2ZP/A" : "NONE",
     "MN8T2ZP/A" : "NONE",
@@ -140,7 +142,7 @@ var source = {
     "MN8R2ZP/A" : "NONE",
     "MNQJ2ZP/A" : "NONE",
     "MN8H2ZP/A" : "NONE",
-    "MN4C2ZP/A" : "NONE",
+    "MN4C2ZP/A" : "ALL",
     "MN4D2ZP/A" : "NONE",
     "MN4J2ZP/A" : "NONE",
     "MN4A2ZP/A" : "NONE",
@@ -192,7 +194,7 @@ var source = {
     "MN4E2ZP/A" : "NONE",
     "MN8J2ZP/A" : "NONE",
     "MN8M2ZP/A" : "NONE",
-    "MN4K2ZP/A" : "NONE",
+    "MN4K2ZP/A" : "ALL",
     "MN482ZP/A" : "NONE",
     "MNQL2ZP/A" : "NONE",
     "MN8P2ZP/A" : "NONE"
@@ -961,11 +963,12 @@ function checkStore(){
 
 function checkStatus(v,v2){
                    for(i in v){
-                       if(v[i]!='NONE'&&getProductName(i)!=undefined){
-
-                           console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:green');
-                           console.log(v2);
-                      
+                       if(v[i]!='NONE'&&getProductName(i)!=undefined){                       
+                           if(checkplus(i)){
+                             console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:red');
+                           }else{
+                             console.log('%c'+getProductName(i)+'现在有货!!!'+getStoreName(v2),'color:green');
+                           }
                        }
                    }
 }
@@ -988,6 +991,13 @@ function getStoreName(v){
     }
 }
 
+function checkplus(v){
+    for(var i=0;i<plusonly.length;i++){
+        if(plusonly[i]==v){
+            return true;
+        }
+    }
+}
 
 var run;
 
