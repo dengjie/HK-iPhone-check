@@ -1,5 +1,5 @@
 /*
-
+    中国大陆 iPhone 7 Plus 预约提醒
     MNRJ2CH/A:iPhone 7 Plus 32GB 黑色 
     MNFU2CH/A:iPhone 7 Plus 128GB 亮黑色
     MNG02CH/A:iPhone 7 Plus 256GB 亮黑色
