@@ -1,5 +1,5 @@
 /*
-
+ 香港 iPhone 7 / 7 Plus 预约提醒
  MN8V2ZP/A:iPhone 7 256GB 玫瑰金色
  MN8G2ZP/A:iPhone 7 32GB 黑色
  MN492ZP/A:iPhone 7 Plus 128GB 銀色
