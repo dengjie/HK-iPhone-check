@@ -48,6 +48,12 @@ var stores_list = {
     "4" : "applestore://"
   },
   "stores" : [ {
+    "storeNumber" : "R673",
+    "storeName" : "apm Hong Kong 观塘",
+    "storeEnabled" : false,
+    "sellEdition" : false,
+    "storeCity" : "香港"
+  }, {
     "storeNumber" : "R499",
     "storeName" : "Canton Road 广东道",
     "storeEnabled" : true,
