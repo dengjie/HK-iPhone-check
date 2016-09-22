@@ -1,51 +1,49 @@
-var d_lName = '李'  //姓
-var d_fName = '小龙'   //名
-var d_email = 'xx@xx.com' // 邮箱用当前登录APPLE ID
-var d_passType = 'passport' // 证件类型  护照填 passport ，身份证填 idCardChina
-var d_passNumber = '11111111111111111111' // 证件号码
-var d_num = '1' // 订几台，最多两台 但 1 台成功率会高一点
-
-//上面是必填项
-
 var time_length = $('#time option').length - 1;
 
-if ($('#time option').length == 0) {
-    console.log('验证完短信进入下一页再运行该脚本');
-}else{
-    pickUp();
-}
-
-function pickUp() {
-    $.ajax({
-        url: window.location.href,
-        type: "POST",
-        data: {
+var d_obj = {
+            lastName: '二蛋', // 名
+            firstName: '王', //姓
+            email: 'xx@xx.com', //邮箱用当前登录APPLE ID
+            selectedGovtIdType: 'passport', //证件类型(注意大小写) ： 护照填 passport ，身份证填 idCardChina ,港澳通行证 entryExitPass (仅限香港预约使用)
+            govtId: '111111111', //证件号码
+            selectedQuantity: 1, //订几台，最多2台 但 1 台成功率会高一点
             selectedStoreNumber: $('input[name="selectedStoreNumber"]').val(),
             selectedContractType: 'UNLOCKED',
-            selectedQuantity: d_num,
             selectedTimeSlotId: $('#time option').eq(time_length).val(),
-            lastName: d_lName,
-            firstName: d_fName,
-            email: d_email,
-            selectedGovtIdType: d_passType,
-            govtId: d_passNumber,
             p_ie: $('#p_ie').val(),
             _flowExecutionKey: $('#_flowExecutionKey').val(),
             _eventId: 'next',
             submit: ''
-        },
-        success: function(data, xhr) {
-            console.log('check your email!')
+            }
+var d_data = Object.keys(d_obj).map(function(key){ 
+  return encodeURIComponent(key) + '=' + encodeURIComponent(d_obj[key]); 
+}).join('&');
 
-        },
-        error: function(xhr) {
-            console.log(xhr.status);
 
+pickUp();
+
+function pickUp() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', window.location.href,true);
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.onload = function () {
+        console.log(xhr.status)
+        if (xhr.readyState === xhr.DONE) {
+
+            if (xhr.status === 200) {
+                console.log(xhr);
+                if(xhr.responseURL.length==67){
+                  window.location.href = xhr.responseURL;  
+                }else{
+                    console.log('fail....');
+                }
+                
+            }else{
+                console.log('fail...');
+            }
         }
-    }).done(function(data) {}).fail(function(jqXHR, textStatus, errorThrown) {
-        if (jqXHR.getResponseHeader('Location') != null) {
-            window.Location = jqXHR.getResponseHeader('Location');
-        }
-    });
+    };
+
+    xhr.send(d_data);
+
 }
-
