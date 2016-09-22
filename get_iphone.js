@@ -41,13 +41,10 @@ function pickUp() {
                 }else{
                     console.log('fail....');
                 }
-                
             }else{
                 console.log('fail...');
             }
         }
     };
-
     xhr.send(d_data);
-
 }
