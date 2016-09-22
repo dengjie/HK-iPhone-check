@@ -20,7 +20,11 @@ var d_data = Object.keys(d_obj).map(function(key){
 }).join('&');
 
 
-pickUp();
+if ($('#time option').length == 0) {
+    console.log('验证完短信进入下一页再运行该脚本');
+}else{
+    pickUp();
+}
 
 function pickUp() {
     var xhr = new XMLHttpRequest();
