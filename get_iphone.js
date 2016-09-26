@@ -1,3 +1,6 @@
+//https://reserve.cdn-apple.com/HK/zh_HK/reserve/iPhone/stores.json
+//https://reserve.cdn-apple.com/HK/zh_HK/reserve/iPhone/availability.json
+//https://reserve.cdn-apple.com/CN/zh_CN/reserve/iPhone/availability?channel=1&appleCare=N&iPP=N&partNumber=MNGR2CH%2FA&store=R484
 var time_length = $('#time option').length - 1;
 
 var d_obj = {
